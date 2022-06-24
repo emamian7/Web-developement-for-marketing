@@ -22,16 +22,16 @@ cur = myconn.cursor()
 try:
     cur.execute ("select ID from category where live = 'live' order by prioty")
     result2 = cur.fetchall()
-    for coursename in resul2:
-        courselist.append(coursename[0])
-        googlelist.append(coursename[1])
-        tweetlist.append(coursename[2])
-        joblist.append(coursename[3])
+    for name in resul2:
+        list.append(cname[0])
+        googlelist.append(name[1])
+        tweetlist.append(name[2])
+        joblist.append(name[3])
 except:
 myconn.rollback()
 mycinn.close()
-courselist
-coursedic
+list
+dic
 
 import nltk
 import string
@@ -42,23 +42,23 @@ nltk.download('stopword')
 from nltk.tokenizer import word_tokenize
 from nltk.corpus import stopwords
 
-course_with_tages = {}
-for courseid, course in coursedict.item():
-    course = course.lower ()
-    words = word_tokenizer (course)
+c_with_tages = {}
+for cid, c in cdict.item():
+    c = c.lower ()
+    words = word_tokenizer (c)
     word_without_punctuation = [w for w in words if w.lower() not in string.punctuation]
     lang_stopwords = stopwords.words('english')
     words_without_stopwords = [ w for w in word_without_punctuation if w.lowernot in lang_stop]
     
     for word in word_without_stopwords:
-        if word in course_with_tags:
-            word_courseid_list = course_with_tages[word]
-            word_courseid_list.append (courseid)
-            word_courseid_list = list (set (word_courseid_list))
+        if word in c_with_tags:
+            word_cid_list = c_with_tages[word]
+            word_cid_list.append (cid)
+            word_cid_list = list (set (word_cid_list))
         else:
-            course_with_tags.update ({word:[courseid]})
-del course_with_tages ["programming"]       
-del course_with_tages ["design"]    
+            c_with_tags.update ({word:[cid]})
+del c_with_tages ["programming"]       
+del c_with_tages ["design"]    
 course_with_tags
 
 def remove_html_tags(text):
